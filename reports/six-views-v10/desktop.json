@@ -1,0 +1,38 @@
+{
+  "executable": "C:\\Users\\PC\\voxelgen\\release\\desktop-1.7.0-1793201062127\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "sixInputCards": true,
+  "realTopBottomUploads": true,
+  "sixMetrics": true,
+  "styles": [
+    {
+      "style": "default",
+      "textureWidth": 512,
+      "coloredGLB": true,
+      "occupied": 2390
+    },
+    {
+      "style": "voxel",
+      "textureWidth": 16,
+      "coloredGLB": true,
+      "occupied": 2390
+    },
+    {
+      "style": "minecraft",
+      "textureWidth": 16,
+      "coloredGLB": true,
+      "occupied": 2390
+    },
+    {
+      "style": "valheim",
+      "textureWidth": 64,
+      "coloredGLB": true,
+      "occupied": 2390
+    }
+  ],
+  "sameVoxelsAcrossStyles": true,
+  "projectRoundtrip": true,
+  "legacyFourViewProject": true,
+  "noAPIKey": true,
+  "external": [],
+  "errors": []
+}

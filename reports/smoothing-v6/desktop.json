@@ -1,0 +1,14 @@
+{
+  "height": 800,
+  "encryptedKeySaved": true,
+  "keyRestoredAfterRestart": true,
+  "modelOnlyChangePersisted": true,
+  "keyNotReturnedToRenderer": true,
+  "imageFixtureDisplayed": true,
+  "authenticationFailureVisible": true,
+  "nativeCancellation": true,
+  "savedKeyUsedByBackend": true,
+  "smoothNativeRustCompiled": true,
+  "providerMocked": true,
+  "errors": []
+}

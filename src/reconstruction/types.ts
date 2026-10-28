@@ -1,0 +1,14 @@
+import type {SmoothingSettings} from './smoothing-types.js';
+import type {Voxels} from '../runtime/index.js';
+export const directions=['front','back','left','right','top','bottom'] as const;
+export type Direction=typeof directions[number];
+export type Raster={width:number;height:number;pixels:Uint8ClampedArray};
+export type MaskSettings={mode:'auto'|'alpha'|'color'|'none';color:[number,number,number];tolerance:number;enclosed:boolean;despeckle:number};
+export type Alignment={offsetX:number;offsetY:number;scale:number;flip:boolean};
+export type ViewInput={direction:Direction;name:string;image:Raster;maskSettings:MaskSettings;alignment:Alignment;overrides?:Uint8Array};
+export type PreparedView=ViewInput&{projectionSpan?:number;mask:Uint8Array;bounds:{x:number;y:number;width:number;height:number};background:[number,number,number];removed:number;warnings:string[]};
+export type ReconstructionOptions={viewMode:'two'|'four'|'six';textureStyle?:'default'|'voxel'|'minecraft'|'valheim';textureResolution?:number;smoothing?:SmoothingSettings;sizing:'grid'|'voxel';resolution:number;voxelSize:number;objectHeight:number;depthRatio:number;largestOnly:boolean;meshMode:'voxel'|'lowpoly'};
+export type ReconstructionResult={voxels:Voxels;worldSide:number;voxelSize:number;objectHeight:number;occupied:number;components:number;removedComponents:number;agreement:{direction:Direction;coverage:number;samples:number}[];warnings:string[];views:PreparedView[];options:ReconstructionOptions;milliseconds:number};
+export const defaultMask=():MaskSettings=>({mode:'auto',color:[255,255,255],tolerance:18,enclosed:false,despeckle:0});
+export const defaultAlignment=():Alignment=>({offsetX:0,offsetY:0,scale:1,flip:false});
+export const defaultOptions=():ReconstructionOptions=>({viewMode:'four',textureStyle:'default',textureResolution:16,sizing:'grid',resolution:32,voxelSize:.04,objectHeight:1,depthRatio:.65,largestOnly:false,meshMode:'voxel'});

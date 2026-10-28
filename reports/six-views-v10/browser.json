@@ -1,0 +1,54 @@
+{
+  "sixInputCards": true,
+  "sixSilhouetteMetrics": true,
+  "realTopBottomUploads": true,
+  "missingViewsDisableReconstruction": true,
+  "stylesAutoRefresh": true,
+  "styles": [
+    {
+      "style": "default",
+      "triangles": 3640,
+      "hasColor": true,
+      "texture": true,
+      "textureWidth": 512,
+      "magFilter": 1006,
+      "wrap": 1001,
+      "maxUV": 0.6689453125
+    },
+    {
+      "style": "voxel",
+      "triangles": 3640,
+      "hasColor": true,
+      "texture": false,
+      "textureWidth": 0,
+      "maxUV": 31
+    },
+    {
+      "style": "minecraft",
+      "triangles": 3640,
+      "hasColor": true,
+      "texture": true,
+      "textureWidth": 16,
+      "magFilter": 1003,
+      "wrap": 1000,
+      "maxUV": 31
+    },
+    {
+      "style": "valheim",
+      "triangles": 3640,
+      "hasColor": true,
+      "texture": true,
+      "textureWidth": 64,
+      "magFilter": 1006,
+      "wrap": 1000,
+      "maxUV": 31
+    }
+  ],
+  "geometryInvariant": true,
+  "projectRoundtrip": true,
+  "greedyMode": true,
+  "generatorBridge": true,
+  "mobile": true,
+  "external": [],
+  "errors": []
+}

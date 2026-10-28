@@ -1,0 +1,15 @@
+{
+  "comparisons": 288,
+  "compiler": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "checks": [
+    "voxels",
+    "texture RGBA",
+    "positions",
+    "normals",
+    "colors",
+    "UVs",
+    "indices",
+    "invalid resolution",
+    "voxel and greedy modes"
+  ]
+}

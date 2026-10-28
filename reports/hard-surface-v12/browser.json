@@ -1,0 +1,44 @@
+{
+  "chestDemo": true,
+  "derivedSurface": true,
+  "sourceGridUnchanged": true,
+  "outputs": [
+    {
+      "style": "voxel",
+      "triangles": 6920,
+      "normals": 20760,
+      "texture": false,
+      "atlas": 0
+    },
+    {
+      "style": "minecraft",
+      "triangles": 6920,
+      "normals": 20760,
+      "texture": true,
+      "atlas": 128
+    },
+    {
+      "style": "valheim",
+      "triangles": 6920,
+      "normals": 20760,
+      "texture": true,
+      "atlas": 128
+    },
+    {
+      "style": "default",
+      "triangles": 6920,
+      "normals": 20760,
+      "texture": true,
+      "atlas": 1024
+    }
+  ],
+  "diagnosticOverlayNotExported": true,
+  "selectedRegion": true,
+  "protectedBox": true,
+  "surfaceBrush": true,
+  "projectRestoresPaint": true,
+  "cancelAndRestart": true,
+  "mobile": true,
+  "external": [],
+  "errors": []
+}

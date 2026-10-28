@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "elapsedMs": 269,
+  "error": "Error: Image generation failed (HTTP 401): the API key was rejected. Open AI connection settings and replace it with a valid key."
+}

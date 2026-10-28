@@ -22,7 +22,7 @@ export function shapeDistance(a:ReturnType<typeof describe>,b:ReturnType<typeof 
 export function evaluate(recipe:Recipe,seeds:number[],heldOut=false,targets?:Voxels[]){
  const key=recipe.family+heldOut;let refs=referenceDescriptions.get(key);
  if(!refs){refs=references(recipe.family).slice(heldOut?4:0,heldOut?5:4).map(describe);referenceDescriptions.set(key,refs);}
- if(targets){let all=customDescriptions.get(targets);if(!all){all=targets.map(describe);customDescriptions.set(targets,all);}refs=all.slice(heldOut?4:0,heldOut?5:4);if(!refs.length)throw Error('Five reference variations are required');}
+ if(targets){let all=customDescriptions.get(targets);if(!all){all=targets.map(describe);customDescriptions.set(targets,all);}refs=all.length>=5?all.slice(heldOut?4:0,heldOut?5:4):all;if(!refs.length)throw Error('At least one reference is required');}
  const voxels=seeds.map(s=>sampleVoxels(recipe,s,20)),samples=voxels.map(describe);
  const similarity=samples.reduce((s,a)=>s+Math.min(...refs!.map(b=>shapeDistance(a,b))),0)/seeds.length;
  const coverage=refs.reduce((s,a)=>s+Math.min(...samples.map(b=>shapeDistance(a,b))),0)/refs.length;
@@ -39,12 +39,13 @@ export function mutate(input:Recipe,random:()=>number,structural:boolean):Recipe
  if(o.angle!==undefined&&random()<.3)o.angle=clamp(o.angle+(random()-.5)*.12,-Math.PI,Math.PI);
  if(structural&&random()<.6){
  const i=Math.floor(random()*r.operations.length),choice=random();
- const kinds=r.version===1?['mass','cut','chip','layer','noise'] as const:['block','strata','wedge','cut','chip','fracture','noise'] as const;
+ const kinds=r.family==='tree'||r.family==='bush'?['trunk','branch','foliage','chip'] as const:r.version===1?['mass','cut','chip','layer','noise'] as const:['block','strata','wedge','cut','chip','fracture','noise'] as const;
  const kind=kinds[Math.floor(random()*kinds.length)];const op:Op={kind,x:(random()-.5)*.8,y:(random()-.5)*.7,z:(random()-.5)*.6,size:.12+random()*.35};
- if(['block','strata','wedge'].includes(kind)){op.stretch=[.5+random()*.8,.4+random()*.8,.5+random()*.6];op.angle=(random()-.5)*.5;}
+ if(kind==='branch')op.end=[(random()-.5)*.9,random()*.6-.1,(random()-.5)*.7];
+ if(['trunk','foliage','block','strata','wedge'].includes(kind)){op.stretch=[.5+random()*.8,.4+random()*.8,.5+random()*.6];op.angle=(random()-.5)*.5;}
  if(choice<.34&&r.operations.length<12)r.operations.push(op);else if(choice<.67&&r.operations.length>1)r.operations.splice(i,1);else r.operations[i]=op;
  }
- if(!r.operations.some(o=>['mass','block','strata','wedge'].includes(o.kind)))r.operations[0]=r.version===1?{kind:'mass',x:0,y:0,z:0,size:.6}:{...baseRecipe(r.family).operations[0]};
+ if(!r.operations.some(o=>['mass','block','strata','wedge','trunk','branch','foliage'].includes(o.kind)))r.operations[0]=r.version===1?{kind:'mass',x:0,y:0,z:0,size:.6}:{...baseRecipe(r.family).operations[0]};
  return validate(r);
 }
 export function randomRecipe(f:Family,rand:()=>number){let r=baseRecipe(f);for(let i=0;i<5;i++)r=mutate(r,rand,true);return r;}

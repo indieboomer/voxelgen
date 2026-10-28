@@ -1,0 +1,23 @@
+{
+  "demo": true,
+  "fourRealFileUploads": true,
+  "exactVoxelJSON": true,
+  "glb": {
+    "triangles": 3648,
+    "atlas": 512
+  },
+  "exactAtlasPixels": true,
+  "wireframeNotExported": true,
+  "projectRoundtrip": true,
+  "pickedBackground": true,
+  "paintErase": true,
+  "twoViewDepth": true,
+  "physicalVoxelSize": true,
+  "cancelAndRestart": true,
+  "greedy": true,
+  "generatorTabPreserved": true,
+  "mobile": true,
+  "externalRequests": [],
+  "aiRequests": [],
+  "errors": []
+}

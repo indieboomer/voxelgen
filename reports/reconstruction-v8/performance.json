@@ -1,0 +1,70 @@
+{
+  "environment": {
+    "cpu": "Intel(R) Core(TM) i9-10900F CPU @ 2.80GHz",
+    "platform": "win32",
+    "arch": "x64",
+    "node": "v24.14.1"
+  },
+  "rows": [
+    {
+      "grid": 24,
+      "sourcePixels": "4 x 192 x 192",
+      "repetitions": 3,
+      "segmentationMs": {
+        "median": 70.8864000000001,
+        "p95": 79.02330000000029
+      },
+      "carvingAndVoxelColorMs": {
+        "median": 5.109300000000076,
+        "p95": 7.608600000000024
+      },
+      "meshingAndAtlasMs": {
+        "median": 35.08010000000013,
+        "p95": 45.9966000000004
+      },
+      "occupied": 1102,
+      "triangles": 2052,
+      "atlas": 512
+    },
+    {
+      "grid": 48,
+      "sourcePixels": "4 x 192 x 192",
+      "repetitions": 3,
+      "segmentationMs": {
+        "median": 66.38079999999991,
+        "p95": 66.84569999999985
+      },
+      "carvingAndVoxelColorMs": {
+        "median": 10.429399999999987,
+        "p95": 21.13689999999997
+      },
+      "meshingAndAtlasMs": {
+        "median": 58.83010000000013,
+        "p95": 67.83079999999973
+      },
+      "occupied": 8291,
+      "triangles": 8052,
+      "atlas": 512
+    },
+    {
+      "grid": 96,
+      "sourcePixels": "4 x 192 x 192",
+      "repetitions": 3,
+      "segmentationMs": {
+        "median": 67.9409999999998,
+        "p95": 68.38889999999992
+      },
+      "carvingAndVoxelColorMs": {
+        "median": 86.33829999999989,
+        "p95": 98.1545000000001
+      },
+      "meshingAndAtlasMs": {
+        "median": 216.65290000000005,
+        "p95": 231.30060000000003
+      },
+      "occupied": 67986,
+      "triangles": 32764,
+      "atlas": 1024
+    }
+  ]
+}

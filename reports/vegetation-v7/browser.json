@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "family": "tree",
+      "triangles": 256,
+      "atlas": 256,
+      "uvs": 768,
+      "exactAtlasPNG": true,
+      "rustDefaultCompiled": true,
+      "typescriptExact": true
+    },
+    {
+      "family": "bush",
+      "triangles": 192,
+      "atlas": 256,
+      "uvs": 576,
+      "exactAtlasPNG": true,
+      "rustDefaultCompiled": true,
+      "typescriptExact": true
+    },
+    {
+      "family": "boulder",
+      "triangles": 160,
+      "atlas": 256,
+      "uvs": 480,
+      "exactAtlasPNG": true,
+      "rustDefaultCompiled": true,
+      "typescriptExact": true
+    }
+  ],
+  "offlineBushPromptPipeline": true,
+  "workerSearch": true,
+  "mobile": true,
+  "errors": []
+}

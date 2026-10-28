@@ -1,0 +1,36 @@
+{
+  "executable": "C:\\Users\\PC\\voxelgen\\release\\desktop-1.6.0-1793199526824\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "jsonReference": true,
+  "glbReference": true,
+  "sourceDrivesSearch": true,
+  "selectedModel": 4,
+  "selectedSeed": 45,
+  "styles": [
+    {
+      "style": "minecraft",
+      "atlas": 256,
+      "triangles": 160
+    },
+    {
+      "style": "valheim",
+      "atlas": 256,
+      "triangles": 160
+    },
+    {
+      "style": "tiny",
+      "atlas": 256,
+      "triangles": 160
+    },
+    {
+      "style": "flat",
+      "atlas": 16,
+      "triangles": 160
+    }
+  ],
+  "allStylesSuperlow": true,
+  "selectedRustCompiled": true,
+  "flatSolidColorsPreserved": true,
+  "reconstructionBridge": true,
+  "remote": [],
+  "errors": []
+}

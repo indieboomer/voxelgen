@@ -1,0 +1,23 @@
+[
+  {
+    "resolution": 32,
+    "reconstructionMs": 32,
+    "smoothingMs": 562,
+    "triangles": 6920,
+    "applied": true
+  },
+  {
+    "resolution": 48,
+    "reconstructionMs": 76,
+    "smoothingMs": 1420,
+    "triangles": 15624,
+    "applied": true
+  },
+  {
+    "resolution": 64,
+    "reconstructionMs": 132,
+    "smoothingMs": 2332,
+    "triangles": 28192,
+    "applied": true
+  }
+]

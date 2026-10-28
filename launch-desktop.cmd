@@ -1,6 +1,8 @@
 @echo off
 setlocal
-set "workshopExe=%~dp0release\Voxel Generator Workshop-win32-x64\VoxelGeneratorWorkshop.exe"
+set "workshopRelative=release\Voxel Generator Workshop-win32-x64\VoxelGeneratorWorkshop.exe"
+if exist "%~dp0release\current-desktop.txt" set /p "workshopRelative="<"%~dp0release\current-desktop.txt"
+set "workshopExe=%~dp0%workshopRelative%"
 if not exist "%workshopExe%" (
   echo Build the desktop app first with npm run desktop:package
   pause

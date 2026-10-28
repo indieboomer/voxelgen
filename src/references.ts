@@ -1,9 +1,12 @@
+import {plantReferences} from './plant-references.js';
 import {type Family, type Voxels} from './runtime/index.js';
 export const referenceDataset = 'geology-study-v2';
 export const referenceBoard = '/art/rock-reference-board-v2.png';
 export const referenceNames: Record<Family,string[]> = {
  boulder:['Split granite','Weathered crown','Joined outcrop','Low granite','Fractured shoulder'],
  layered:['Undercut shale','Tilted bedding','Broken shelves','Offset strata','Eroded ledges'],
+ tree:['Broad oak','Woodland crown','Forked tree','Young canopy','Crooked oak'],
+ bush:['Emerald shrub','Olive shrub','Spreading bush','Dense shrub','Low thicket'],
  shard:['Basalt fin','Split blade','Stepped spire','Sloping buttress','Fracture ridge']
 };
 // Authored voxel interpretations of AI-generated 2D artwork. No generated 3D mesh is claimed.
@@ -15,6 +18,7 @@ const cache=new Map<string,Voxels[]>();
 export function references(family:Family,n=20):Voxels[]{
  if(!Number.isInteger(n)||n<12||n>48)throw Error('Reference resolution must be 12-48');
  const key=`${family}:${n}`,existing=cache.get(key);if(existing)return existing;
+ if(family==='tree'||family==='bush'){const result=plantReferences(family,n);cache.set(key,result);return result;}
  const result=Array.from({length:5},(_,k)=>{
  const cells=new Uint8Array(n**3),phase=k*.73;
  for(let z=0;z<n;z++)for(let y=0;y<n;y++)for(let x=0;x<n;x++){
@@ -51,3 +55,5 @@ export function references(family:Family,n=20):Voxels[]{
  return {version:1 as const,resolution:n,cells,palette,material:{family,seed:k},provenance:`${referenceDataset}: ${referenceNames[family][k]}. Authored voxel interpretation of AI-generated 2D concept board rock-reference-board-v2.png; not AI-generated 3D. ${k===4?'Held-out reference.':'Training reference.'}`};
  });cache.set(key,result);return result;
 }
+
+export function referenceLayout(family:Family){if(family==='tree'||family==='bush')return {board:'/art/vegetation-reference-board-v7.png',position:family==='tree'?0:100,aspect:family==='tree'?.85:1.28,rows:2};const row=['boulder','layered','shard'].indexOf(family);return {board:referenceBoard,position:row===0?0:row===1?43.75:100,aspect:row===1?1.75:row===2?1.25:1.6,rows:3};}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "family": "boulder",
+  "elongation": 1,
+  "erosion": 0,
+  "hue": 0.45,
+  "operations": [
+    {
+      "kind": "block",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "size": 0.9,
+      "stretch": [
+        1,
+        0.7777777777777777,
+        0.4444444444444445
+      ],
+      "angle": 0
+    }
+  ]
+}

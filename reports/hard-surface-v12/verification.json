@@ -1,0 +1,68 @@
+{
+  "cubeMaxPlaneError": 0,
+  "chestBodyPlaneSpread": 0,
+  "rawRoofRMS": 0.018579818804281868,
+  "smoothRoofRMS": 0.01060121889549646,
+  "roofImprovement": 0.4294229127221991,
+  "unchangedProtectedBodyVertices": 12744,
+  "sourceVoxelsUnchanged": true,
+  "thinFeatureProtection": {
+    "method": "silhouette-guided dual contouring",
+    "applied": true,
+    "vertices": 518,
+    "planes": 0,
+    "curves": 0,
+    "creases": 0,
+    "corners": 0,
+    "protected": 418,
+    "thinProtected": 100,
+    "fallbackEdges": 514,
+    "repairedVertices": 0,
+    "maxShiftVoxels": 0,
+    "maxSilhouetteErrorVoxels": 0
+  },
+  "protectedGapWidth": 0.032499998807907104,
+  "fittedGapWidth": 0.0234375,
+  "narrowGapRetained": true,
+  "nonManifoldFallback": true,
+  "closedManifoldEdges": true,
+  "positiveVolume": 0.7378456761998661,
+  "deterministic": true,
+  "stats": {
+    "method": "silhouette-guided dual contouring",
+    "applied": true,
+    "vertices": 3458,
+    "planes": 2554,
+    "curves": 306,
+    "creases": 520,
+    "corners": 44,
+    "protected": 34,
+    "thinProtected": 0,
+    "fallbackEdges": 72,
+    "repairedVertices": 0,
+    "maxShiftVoxels": 0.4999000000000003,
+    "maxSilhouetteErrorVoxels": 0.19968086726245893
+  },
+  "modes": [
+    {
+      "textureStyle": "default",
+      "triangles": 6912,
+      "textureWidth": 1024
+    },
+    {
+      "textureStyle": "voxel",
+      "triangles": 6912,
+      "textureWidth": 16
+    },
+    {
+      "textureStyle": "minecraft",
+      "triangles": 6912,
+      "textureWidth": 128
+    },
+    {
+      "textureStyle": "valheim",
+      "triangles": 6912,
+      "textureWidth": 128
+    }
+  ]
+}

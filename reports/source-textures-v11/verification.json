@@ -1,0 +1,50 @@
+{
+  "sixViewGeometryPreserved": true,
+  "foregroundMean": [
+    190,
+    100,
+    50
+  ],
+  "sourceNoiseDelta": [
+    40,
+    20,
+    10
+  ],
+  "averagedVoxelPaletteColors": 1,
+  "voxelPalettePreservesExactSourceMean": true,
+  "fineGridAveragedColors": 1,
+  "noRemovedBackgroundInMeans": true,
+  "noGeneratedNoise": true,
+  "noPerVoxelRepeatingUVs": true,
+  "sourceRGBNotDoubleTinted": true,
+  "coarseGradientColors": 64,
+  "fineGradientColors": 1024,
+  "greedyAndVoxelShareColorScale": true,
+  "deterministic": true,
+  "cases": [
+    {
+      "meshMode": "voxel",
+      "textureStyle": "minecraft",
+      "textureWidth": 64,
+      "frontFaceColorPixelSpan": 0.26000022888183594
+    },
+    {
+      "meshMode": "voxel",
+      "textureStyle": "valheim",
+      "textureWidth": 64,
+      "frontFaceColorPixelSpan": 0.26000022888183594
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "minecraft",
+      "textureWidth": 64,
+      "frontFaceColorPixelSpan": 7.799999237060547
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "valheim",
+      "textureWidth": 64,
+      "frontFaceColorPixelSpan": 7.799999237060547
+    }
+  ]
+}

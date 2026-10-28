@@ -1,0 +1,18 @@
+{
+  "viewerHeight": 800,
+  "settingsReachBackend": true,
+  "keyInputCleared": true,
+  "progressVisible": true,
+  "successfulImageDisplayed": true,
+  "authenticationErrorVisible": true,
+  "cancellation": true,
+  "smoothedRustCompiled": true,
+  "glb": {
+    "triangles": 896,
+    "diagonal": 2529,
+    "textures": 1
+  },
+  "mobile": true,
+  "providerMocked": true,
+  "errors": []
+}

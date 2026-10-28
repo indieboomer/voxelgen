@@ -1,0 +1,4 @@
+﻿import {createRequire} from 'node:module';
+import {writeFileSync} from 'node:fs';
+const require=createRequire(import.meta.url);const {generateImage,capabilities}=require('../desktop/image-service.cjs');
+const started=Date.now();try{const r=await generateImage('A compact fractured grey granite boulder with broad planar faces and warm ochre mineral seams, isolated game asset');writeFileSync('.test-artifacts/live-ai-v6.png',Buffer.from(r.image.split(',')[1],'base64'));writeFileSync('reports/smoothing-v6/live-ai.json',JSON.stringify({success:true,elapsedMs:Date.now()-started,provenance:r.provenance},null,2));console.log('LIVE IMAGE SUCCESS',Date.now()-started,'ms');}catch(e){writeFileSync('reports/smoothing-v6/live-ai.json',JSON.stringify({success:false,elapsedMs:Date.now()-started,error:String(e)},null,2));console.log('LIVE IMAGE RESULT:',String(e));process.exitCode=1;}

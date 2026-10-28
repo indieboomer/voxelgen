@@ -1,0 +1,18 @@
+{
+  "executable": "C:\\Users\\PC\\voxelgen\\release\\desktop-1.5.0-1793197130033\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "isolatedProfile": true,
+  "noAPIKey": true,
+  "nativeFileUpload": true,
+  "grid": 48,
+  "occupied": 8291,
+  "triangles": 8052,
+  "atlas": 512,
+  "exactVoxelExport": true,
+  "texturedGLB": true,
+  "projectSaveAndRestore": true,
+  "generatorTabPreserved": true,
+  "backgroundWorkerTimerMilliseconds": 65.40000009536743,
+  "externalRequests": [],
+  "aiOrAPIFetchCalls": 0,
+  "errors": []
+}

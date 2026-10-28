@@ -1,0 +1,23 @@
+{
+  "executable": "C:\\Users\\PC\\voxelgen\\release\\desktop-1.4.0-1793195296878\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "results": [
+    {
+      "family": "tree",
+      "triangles": 256,
+      "atlas": 256,
+      "selectedRustCompiled": true,
+      "texturedGLBSaved": true
+    },
+    {
+      "family": "bush",
+      "triangles": 192,
+      "atlas": 256,
+      "selectedRustCompiled": true,
+      "texturedGLBSaved": true
+    }
+  ],
+  "customProtocolMeshWorker": true,
+  "offlineTreePromptPipeline": true,
+  "nativeWorkerSearch": true,
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "executable": "C:\\Users\\PC\\voxelgen\\release\\desktop-1.9.0-1793206202405\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "outputs": [
+    {
+      "style": "default",
+      "atlas": 1024,
+      "applied": true
+    },
+    {
+      "style": "voxel",
+      "atlas": 16,
+      "applied": true
+    },
+    {
+      "style": "minecraft",
+      "atlas": 128,
+      "applied": true
+    },
+    {
+      "style": "valheim",
+      "atlas": 128,
+      "applied": true
+    }
+  ],
+  "sourceGridUnchanged": true,
+  "overlaySafeExport": true,
+  "protectedBox": true,
+  "projectRoundtrip": true,
+  "legacyDefaults": true,
+  "noAPIKey": true,
+  "external": [],
+  "errors": []
+}

@@ -1,2 +1,2 @@
-﻿const {contextBridge,ipcRenderer}=require('electron');
-contextBridge.exposeInMainWorld('workshop',{desktop:true,capabilities:()=>ipcRenderer.invoke('reference:capabilities'),generateImage:prompt=>ipcRenderer.invoke('reference:image',prompt),save:(name,bytes)=>ipcRenderer.invoke('export:save',{name,bytes})});
+const {contextBridge,ipcRenderer}=require('electron');
+contextBridge.exposeInMainWorld('workshop',{desktop:true,configureImage:settings=>ipcRenderer.invoke('reference:configure',settings),cancelImage:()=>ipcRenderer.invoke('reference:cancel'),capabilities:()=>ipcRenderer.invoke('reference:capabilities'),generateImage:prompt=>ipcRenderer.invoke('reference:image',prompt),save:(name,bytes)=>ipcRenderer.invoke('export:save',{name,bytes})});

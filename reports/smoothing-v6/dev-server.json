@@ -1,0 +1,7 @@
+{
+  "capabilitiesReachable": true,
+  "settingsHttp": 200,
+  "liveImageHttp": 400,
+  "liveProviderResult": "Image generation failed (HTTP 401): the API key was rejected. Open AI connection settings and replace it with a valid key.",
+  "imageReturned": false
+}

@@ -1,0 +1,11 @@
+{
+  "replacementKeyUsed": true,
+  "cancellation": true,
+  "authenticationErrorVisible": true,
+  "mockedRequest": true,
+  "missingKeyError": true,
+  "inputValidation": true,
+  "providerError": true,
+  "secretNotReturned": true,
+  "livePaidRequestExecuted": false
+}

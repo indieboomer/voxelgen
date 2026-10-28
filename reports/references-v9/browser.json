@@ -1,0 +1,49 @@
+{
+  "jsonTargetSearch": true,
+  "glbTargetSearch": true,
+  "sourceColors": true,
+  "singleTargetValidationHonest": true,
+  "styles": [
+    {
+      "style": "natural",
+      "textureWidth": 128,
+      "texturedGLB": true,
+      "rustDefaultMatches": true,
+      "jsMatches": true
+    },
+    {
+      "style": "minecraft",
+      "textureWidth": 16,
+      "texturedGLB": true,
+      "rustDefaultMatches": true,
+      "jsMatches": true
+    },
+    {
+      "style": "valheim",
+      "textureWidth": 64,
+      "texturedGLB": true,
+      "rustDefaultMatches": true,
+      "jsMatches": true
+    },
+    {
+      "style": "tiny",
+      "textureWidth": 8,
+      "texturedGLB": true,
+      "rustDefaultMatches": true,
+      "jsMatches": true
+    },
+    {
+      "style": "flat",
+      "textureWidth": 16,
+      "texturedGLB": false,
+      "rustDefaultMatches": true,
+      "jsMatches": true
+    }
+  ],
+  "superlowStyleSwitch": true,
+  "reconstructionBridge": true,
+  "invalidImportPreservesTarget": true,
+  "mobile": true,
+  "remote": [],
+  "errors": []
+}

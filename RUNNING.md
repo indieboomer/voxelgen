@@ -1,10 +1,22 @@
 # Running Voxel Generator Workshop
 
+**Shape-preserving reconstruction smoothing:** enable the new panel in Multi-view reconstruction. Source-contour fitting retains hard planes and edges; choose automatic or selected-region smoothing, protect boxes, or paint smooth/protect on the 3D surface. Source voxels remain unchanged; the fitted surface is used by preview and GLB. Try **Load arched chest demo**. See [usage and verification](reports/hard-surface-v12/REPORT.md).
+
+**Six-view reconstruction and source-based texture styles:** choose **Six views / add top + bottom** to constrain the footprint and use all six source colors. Reconstruction's **Minecraft-like** and **Valheim-like** modes now average the original views into whole-model color patches, with no generated noise or repeated voxel tiles. Minecraft uses crisp pixels; Valheim blends the averages. **Source color resolution** controls heavy pixelation (4?64 across a view). **One color per voxel** uses averaged source footprints. Preview, GLB/PNG exports and projects retain the mode and resolution. See [usage and verification](reports/source-textures-v11/REPORT.md).
+
+**Imported 3D search references and texture styles:** in Procedural generator, click **Load a 3D search reference** to load a GLB or voxel JSON. Imported geometry drives optimization. The reconstruction tool also has **Use as generator reference**. Choose **Texture style**: Natural, Minecraft-like, Valheim-like, Tiny pixelated or Flat color; PNG/GLB and Rust/TypeScript exports retain it. See [usage, import limits and verification](reports/references-v9/REPORT.md).
+
+**New tool: Multi-view reconstruction.** Open the second tool tab to load front/back or front/back/left/right images, inspect/remove solid backgrounds, correct masks, align views and reconstruct a colored voxel model locally. Choose grid cells or physical voxel size. The tool uses silhouette intersection and source-color projection, with no AI, weights or network requirement. Two views need an explicit depth assumption; four views constrain depth. Export voxel JSON, textured GLB, atlas PNG or a restorable project. See [approach comparison](reports/reconstruction-v8/ANALYSIS.md) and [usage and checks](reports/reconstruction-v8/REPORT.md).
+
+**Latest update:** choose **Tree** or **Bush** under Asset family, or describe one in the top prompt. Both support search, all geometry modes, textured GLB and standalone Rust/TypeScript exports. **Super low-poly** retopologizes the smoothed mesh with quadric edge collapses and bakes its colors/detail into a new texture atlas. Default targets: rocks 160, trees 256, bushes 192 triangles. Processing runs in a background worker with progress and caching. See [implementation and verification](reports/vegetation-v7/REPORT.md).
+
+**Latest update:** generated previews are now twice as tall (800 px). Choose **Smooth** or **Smooth low-poly** for Surface Nets with constrained relaxation. The top **AI image connection settings** panel accepts a replacement API key and stores it encrypted on Windows. A live check found the configured environment key is rejected with HTTP 401, so a valid key is required for live AI images. See [algorithm choice, diagnostics and verification](reports/smoothing-v6/REPORT.md).
+
 **Voxel / low-poly switch:** choose **Model geometry** in the sidebar. Low-poly performs face culling, material-aware greedy rectangle merging and triangulation, preserving the voxel silhouette and textures. Preview counts show the reduction; **Show triangle edges** inspects topology. GLB, Rust and TypeScript exports honor the selected mode. See [meshing details and checks](reports/meshing-v5/REPORT.md).
 
 **Portable Windows download:** `release/VoxelGeneratorWorkshop-Windows-x64.zip` (extract the whole folder).
 
-**Windows desktop build:** double-click `launch-desktop.cmd`, or `release/Voxel Generator Workshop-win32-x64/VoxelGeneratorWorkshop.exe`. Keep the whole app folder together. No browser or dev server is required. See [desktop and prompt workflow](reports/desktop-v4/REPORT.md).
+**Windows desktop build:** double-click `launch-desktop.cmd`. The launcher reads `release/current-desktop.txt` to open the verified build; each rebuild gets its own folder so an open app is not overwritten. Keep the whole app folder together. No browser or dev server is required. See [desktop and prompt workflow](reports/desktop-v4/REPORT.md).
 
 The top prompt panel now guides 2D concept -> procedural 3D reference -> optimization. Choose among four numbered models to set the exact export seed; Rust exports the whole generator with `selected_rock()` and matching CLI defaults.
 
@@ -22,7 +34,7 @@ Open http://127.0.0.1:5173. `npm run build` produces the static app in `dist/`.
 1. Choose a rock family. The 2D AI concept cards select a corresponding authored voxel reference.
 2. Inspect the separate 3D reference view immediately below the artwork. Choose any of five reference thumbnails, orbit/zoom, or download reference voxel JSON / textured GLB.
 3. Inspect generated variations in the next 3D view. Set seed and resolution, choose A/B/C, then start or stop the worker search. Click an elite to inspect its program. Pin a recipe and generate another batch.
-4. Export the selected recipe, voxel JSON, TypeScript wrapper, self-contained Rust generator, texture PNG or textured GLB. The surface-material selector controls whether GLBs include textures.
+4. Export the selected recipe, voxel JSON, TypeScript wrapper, self-contained Rust generator, texture PNG or textured GLB. The surface-material selector controls whether GLBs include textures. Geometry modes include voxel, greedy low-poly and full/coarse Surface Nets smoothing.
 
 Both viewers use neutral lighting and the same perspective field of view; each has independent orbit/zoom. Artwork is 2D, not AI-generated 3D geometry. Its fifteen voxel interpretations are independently authored code. See [provenance](reports/PROVENANCE.md).
 

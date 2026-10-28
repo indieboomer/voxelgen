@@ -1,0 +1,85 @@
+{
+  "comparisons": 100,
+  "styles": [
+    {
+      "family": "boulder",
+      "style": "natural",
+      "width": 128,
+      "textureHash": 4192954511
+    },
+    {
+      "family": "boulder",
+      "style": "minecraft",
+      "width": 16,
+      "textureHash": 1542372005
+    },
+    {
+      "family": "boulder",
+      "style": "valheim",
+      "width": 64,
+      "textureHash": 3521430834
+    },
+    {
+      "family": "boulder",
+      "style": "tiny",
+      "width": 8,
+      "textureHash": 2665483549
+    },
+    {
+      "family": "boulder",
+      "style": "flat",
+      "width": 16,
+      "textureHash": 1110397381
+    },
+    {
+      "family": "tree",
+      "style": "natural",
+      "width": 128,
+      "textureHash": 2924002131
+    },
+    {
+      "family": "tree",
+      "style": "minecraft",
+      "width": 16,
+      "textureHash": 1542372005
+    },
+    {
+      "family": "tree",
+      "style": "valheim",
+      "width": 64,
+      "textureHash": 3521430834
+    },
+    {
+      "family": "tree",
+      "style": "tiny",
+      "width": 8,
+      "textureHash": 2665483549
+    },
+    {
+      "family": "tree",
+      "style": "flat",
+      "width": 16,
+      "textureHash": 1110397381
+    }
+  ],
+  "glbShellVoxels": 2520,
+  "glbSolidVoxels": 9240,
+  "fittedBlocks": 1,
+  "singleTargetSearch": {
+    "starter": 0.021734580411882587,
+    "best": 0.003943689429886804,
+    "validation": 0.016787256432154462
+  },
+  "checks": [
+    "triangle-box voxelization",
+    "closed interior fill",
+    "surface color",
+    "deterministic normalization",
+    "single-target real search",
+    "valid fitted recipe",
+    "all styles in all five geometry modes",
+    "exact JS/Rust buffers and textures",
+    "selected Rust style default",
+    "geometry unchanged by texture style"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "sixDirections": [
+    "front",
+    "back",
+    "left",
+    "right",
+    "top",
+    "bottom"
+  ],
+  "rectangularShapeMatchesFourViews": true,
+  "topAndBottomSixSourceColors": true,
+  "topScale": 0.40625,
+  "cuboidVoxels": 4320,
+  "notchedVoxels": 3648,
+  "notchedAgreement": [
+    {
+      "direction": "front",
+      "coverage": 1,
+      "samples": 432
+    },
+    {
+      "direction": "back",
+      "coverage": 1,
+      "samples": 432
+    },
+    {
+      "direction": "left",
+      "coverage": 1,
+      "samples": 240
+    },
+    {
+      "direction": "right",
+      "coverage": 1,
+      "samples": 240
+    },
+    {
+      "direction": "top",
+      "coverage": 1,
+      "samples": 152
+    },
+    {
+      "direction": "bottom",
+      "coverage": 1,
+      "samples": 152
+    }
+  ],
+  "wrongBottomFlipDetected": true,
+  "allOccupiedCellsSatisfySixMasks": true,
+  "allFacesUseVoxelPaletteColor": true,
+  "wholeModelSourceUVs": true,
+  "worldScaleInvariant": true,
+  "legacyDemoFourViews": true,
+  "cases": [
+    {
+      "meshMode": "voxel",
+      "textureStyle": "default",
+      "triangles": 3296,
+      "textureWidth": 512
+    },
+    {
+      "meshMode": "voxel",
+      "textureStyle": "voxel",
+      "triangles": 3296,
+      "textureWidth": 16
+    },
+    {
+      "meshMode": "voxel",
+      "textureStyle": "minecraft",
+      "triangles": 3296,
+      "textureWidth": 128
+    },
+    {
+      "meshMode": "voxel",
+      "textureStyle": "valheim",
+      "triangles": 3296,
+      "textureWidth": 128
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "default",
+      "triangles": 58,
+      "textureWidth": 64
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "voxel",
+      "triangles": 58,
+      "textureWidth": 16
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "minecraft",
+      "triangles": 58,
+      "textureWidth": 128
+    },
+    {
+      "meshMode": "lowpoly",
+      "textureStyle": "valheim",
+      "triangles": 58,
+      "textureWidth": 128
+    }
+  ]
+}

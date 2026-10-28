@@ -1,0 +1,83 @@
+{
+  "backgroundCases": 8,
+  "gridFixtures": [
+    {
+      "grid": 16,
+      "occupied": 1152,
+      "iou": 1,
+      "carvingMilliseconds": 6.24969999999999
+    },
+    {
+      "grid": 24,
+      "occupied": 4320,
+      "iou": 1,
+      "carvingMilliseconds": 13.480199999999996
+    },
+    {
+      "grid": 32,
+      "occupied": 8640,
+      "iou": 1,
+      "carvingMilliseconds": 11.598199999999963
+    },
+    {
+      "grid": 48,
+      "occupied": 31464,
+      "iou": 0.9473684210526315,
+      "carvingMilliseconds": 32.832700000000045
+    },
+    {
+      "grid": 64,
+      "occupied": 74400,
+      "iou": 1,
+      "carvingMilliseconds": 119.37260000000003
+    },
+    {
+      "grid": 96,
+      "occupied": 258704,
+      "iou": 0.9473684210526315,
+      "carvingMilliseconds": 206.7337
+    }
+  ],
+  "demo": {
+    "occupied": 2430,
+    "components": 1,
+    "agreement": [
+      {
+        "direction": "front",
+        "coverage": 1,
+        "samples": 337
+      },
+      {
+        "direction": "back",
+        "coverage": 1,
+        "samples": 337
+      },
+      {
+        "direction": "left",
+        "coverage": 1,
+        "samples": 216
+      },
+      {
+        "direction": "right",
+        "coverage": 1,
+        "samples": 216
+      }
+    ]
+  },
+  "checks": [
+    "all occupied cells satisfy every silhouette",
+    "cuboid ground truth IoU > .9 at six grids",
+    "correct opposite-view mirroring",
+    "four directional surface colors",
+    "source atlas determinism",
+    "palette voxel import through existing parser to grid 96",
+    "two-view depth assumption",
+    "physical voxel size",
+    "world-scale invariance",
+    "invalid inputs",
+    "conflicting masks",
+    "greedy reduction",
+    "preserve disconnected parts and optional largest-component cleanup"
+  ],
+  "aiOrNetworkUsed": false
+}

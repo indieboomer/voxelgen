@@ -1,0 +1,76 @@
+{
+  "cases": 80,
+  "checks": [
+    "finite geometry",
+    "nondegenerate outward triangles",
+    "unit normals",
+    "UV ranges",
+    "closed paired edges after coordinate welding",
+    "positive signed volume",
+    "diagonal surface normals",
+    "unchanged voxels",
+    "determinism"
+  ],
+  "rows": [
+    {
+      "family": "boulder",
+      "mode": "smooth",
+      "triangles": 3252,
+      "extractionResolution": 28,
+      "repairs": 5
+    },
+    {
+      "family": "boulder",
+      "mode": "smooth-coarse",
+      "triangles": 848,
+      "extractionResolution": 14,
+      "repairs": 0
+    },
+    {
+      "family": "layered",
+      "mode": "smooth",
+      "triangles": 3176,
+      "extractionResolution": 28,
+      "repairs": 0
+    },
+    {
+      "family": "layered",
+      "mode": "smooth-coarse",
+      "triangles": 892,
+      "extractionResolution": 14,
+      "repairs": 0
+    },
+    {
+      "family": "shard",
+      "mode": "smooth",
+      "triangles": 2220,
+      "extractionResolution": 28,
+      "repairs": 0
+    },
+    {
+      "family": "shard",
+      "mode": "smooth-coarse",
+      "triangles": 628,
+      "extractionResolution": 14,
+      "repairs": 0
+    }
+  ],
+  "timings": [
+    {
+      "mode": "smooth",
+      "measured": 12,
+      "medianMs": 25.869799999999486,
+      "p95Ms": 26.327400000000125
+    },
+    {
+      "mode": "smooth-coarse",
+      "measured": 12,
+      "medianMs": 4.0625,
+      "p95Ms": 4.335900000000038
+    }
+  ],
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "win32"
+  }
+}

@@ -1,9 +1,10 @@
-﻿import {_electron as electron,expect} from '@playwright/test';
+import {desktopExecutable} from './desktop-executable.mjs';
+import {_electron as electron,expect} from '@playwright/test';
 import assert from 'node:assert/strict';
 import {resolve} from 'node:path';
 import {existsSync,readFileSync,writeFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
-const app=await electron.launch({executablePath:resolve('release/Voxel Generator Workshop-win32-x64/VoxelGeneratorWorkshop.exe'),args:['--qa']});
+const app=await electron.launch({executablePath:desktopExecutable,args:['--qa']});
 try{const page=await app.firstWindow(),errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.waitForSelector('#mesh-mode');await page.selectOption('#mesh-mode','lowpoly');await expect(page.locator('#mesh-stats')).toContainText('Low-poly:');await page.locator('[data-model="2"]').click();await page.check('#wireframe');
 const id=Date.now().toString(),rust=resolve(`.test-artifacts/meshing/native-${id}.rs`);await app.evaluate(({dialog},file)=>{dialog.showSaveDialog=async()=>({canceled:false,filePath:file});},rust);await page.click('#rust');await expect.poll(()=>existsSync(rust)).toBe(true);assert(readFileSync(rust,'utf8').includes('SELECTED_MESH_MODE: MeshMode = MeshMode::Greedy'));const build=spawnSync('rustc',['--edition=2021','-O','--crate-name','native_greedy',rust,'-o','.test-artifacts/meshing/native-greedy.exe'],{encoding:'utf8'});assert.equal(build.status,0,build.stderr);const run=spawnSync('.test-artifacts/meshing/native-greedy.exe',[],{encoding:'utf8'});assert.equal(run.status,0,run.stderr);const low=JSON.parse(run.stdout);const voxelRun=spawnSync('.test-artifacts/meshing/native-greedy.exe',['44','28','1','voxel'],{encoding:'utf8'});assert.equal(voxelRun.status,0,voxelRun.stderr);const voxel=JSON.parse(voxelRun.stdout);assert(low.indices<voxel.indices);assert.equal(low.cellsHash,voxel.cellsHash);assert.equal(low.textureHash,voxel.textureHash);
 const file=resolve(`.test-artifacts/meshing/native-${id}.glb`);await app.evaluate(({dialog},file)=>{dialog.showSaveDialog=async()=>({canceled:false,filePath:file});},file);await page.click('#glb');await expect.poll(()=>existsSync(file)).toBe(true);const bytes=readFileSync(file),gltf=JSON.parse(bytes.subarray(20,20+bytes.readUInt32LE(12)).toString());const primitive=gltf.meshes[0].primitives[0];assert.equal(primitive.mode??4,4);assert.equal(gltf.accessors[primitive.indices].count,low.indices);assert(gltf.images.length>0);

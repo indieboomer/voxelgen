@@ -1,0 +1,7 @@
+{
+    "asarSHA256":  "545B415D1A0B2178872AC33E2610B5A526EB9BC08BBD82097DFC8E37EFD4251E",
+    "zipBytes":  163071606,
+    "zipMatchesTestedBuild":  true,
+    "version":  "1.6.0",
+    "executable":  "release\\desktop-1.6.0-1793199526824\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe"
+}

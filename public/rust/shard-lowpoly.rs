@@ -9,7 +9,7 @@ pub fn selected_rock() -> Result<Rock,String> { generate_rock_with_mode(&RECIPE,
 // RECIPE is exported data interpreted by this runtime, not specialized compiled geometry.
 
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MeshMode { Voxel, Greedy }
+pub enum MeshMode { Voxel, Greedy, SurfaceNets, SurfaceNetsCoarse }
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Family { Boulder, Layered, Shard }
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -103,6 +103,36 @@ fn mesh_greedy(v:&Voxels,scale:f64)->Geometry {
  }(p,normals,colors,uvs,indices,[lo,hi])
 }
 
+#[derive(Clone)]
+struct SurfaceQuad { vertices:[usize;4], material:u8, axis:usize }
+fn mesh_surface(v:&Voxels,scale:f64,coarse:bool)->Result<Geometry,String>{
+ let original=v.resolution;let n=if coarse{(original+1)/2}else{original};let side=n+2;let mut grid=vec![0u8;side*side*side];
+ for z in 0..n{for y in 0..n{for x in 0..n{let mut counts=vec![0usize;v.palette.len()];let mut total=0;let mut occupied=0;
+ for c in z*original/n..(z+1)*original/n{for b in y*original/n..(y+1)*original/n{for a in x*original/n..(x+1)*original/n{let value=v.cells[a+original*(b+original*c)];total+=1;if value!=0{occupied+=1;counts[value as usize]+=1;}}}}
+ if occupied>0&&occupied*4>=total{let mut material=1;for i in 2..counts.len(){if counts[i]>counts[material]{material=i;}}grid[(x+1)+side*((y+1)+side*(z+1))]=material as u8;}
+ }}}
+ if coarse&&grid.iter().all(|a|*a==0)&&v.cells.iter().any(|a|*a!=0){return mesh_surface(v,scale,false);}
+ let stride=[1,side,side*side];let mut changed=true;
+ while changed{changed=false;for d in 0..3{let u=(d+1)%3;let w=(d+2)%3;for k in 0..side{for j in 0..side-1{for i in 0..side-1{let mut p=[0usize;3];p[d]=k;p[u]=i;p[w]=j;let a=p[0]+side*(p[1]+side*p[2]);let b=a+stride[u];let c=b+stride[w];let e=a+stride[w];if (grid[a]!=0)==(grid[c]!=0)&&(grid[b]!=0)==(grid[e]!=0)&&(grid[a]!=0)!=(grid[b]!=0){let destination=if grid[a]!=0{b}else{a};grid[destination]=if grid[a]!=0{grid[a]}else{grid[b]};changed=true;}}}}}}
+ let at=|x:usize,y:usize,z:usize|grid[x+side*(y+side*z)];let cells=n+1;let mut ids=vec![-1i32;cells*cells*cells];let mut points:Vec<[f64;3]>=Vec::new();let mut origins=Vec::new();
+ for z in 0..cells{for y in 0..cells{for x in 0..cells{let mut values=[false;8];for i in 0..8{values[i]=at(x+(i&1),y+((i>>1)&1),z+((i>>2)&1))!=0;}if values.iter().all(|a|*a)||values.iter().all(|a|!*a){continue;}let mut sum=[0.0;3];let mut count=0;
+ for d in 0..3{for i in 0..8{if i&(1<<d)!=0{continue;}let j=i|(1<<d);if values[i]==values[j]{continue;}for k in 0..3{sum[k]+=(((i>>k)&1)+((j>>k)&1)) as f64*0.5;}count+=1;}}
+ ids[x+cells*(y+cells*z)]=points.len() as i32;points.push([x as f64+sum[0]/count as f64,y as f64+sum[1]/count as f64,z as f64+sum[2]/count as f64]);origins.push([x,y,z]);
+ }}}
+ let mut quads:Vec<SurfaceQuad>=Vec::new();let mut neighbors:Vec<Vec<usize>>=vec![Vec::new();points.len()];
+ for axis in 0..3{let u=(axis+1)%3;let w=(axis+2)%3;for k in 0..=n{for j in 1..=n{for i in 1..=n{let mut p=[0usize;3];p[axis]=k;p[u]=i;p[w]=j;let a=at(p[0],p[1],p[2]);p[axis]+=1;let b=at(p[0],p[1],p[2]);p[axis]-=1;if (a!=0)==(b!=0){continue;}
+ let mut q=[p;4];q[0][u]-=1;q[0][w]-=1;q[1][w]-=1;q[3][u]-=1;let order=if a!=0{[0,1,2,3]}else{[0,3,2,1]};let mut vertices=[0usize;4];for t in 0..4{let p=q[order[t]];let id=ids[p[0]+cells*(p[1]+cells*p[2])];if id<0{return Err("Incomplete surface net".into());}vertices[t]=id as usize;}
+ quads.push(SurfaceQuad{vertices,material:if a!=0{a}else{b},axis});for t in 0..4{let x=vertices[t];let y=vertices[(t+1)%4];if !neighbors[x].contains(&y){neighbors[x].push(y);}if !neighbors[y].contains(&x){neighbors[y].push(x);}}
+ }}}}
+ let mut relaxed=points;
+ for _ in 0..2{let mut next=relaxed.clone();for i in 0..relaxed.len(){let linked=&neighbors[i];if linked.is_empty(){continue;}for d in 0..3{let mut sum=0.0;for j in linked{sum+=relaxed[*j][d];}let value=relaxed[i][d]+0.35*(sum/linked.len() as f64-relaxed[i][d]);next[i][d]=(origins[i][d] as f64+0.05).max((origins[i][d] as f64+0.95).min(value));}}relaxed=next;}
+ let mut positions=Vec::new();let mut normals=Vec::new();let mut colors=Vec::new();let mut uvs=Vec::new();let mut indices=Vec::new();let mut lo=[f64::INFINITY;3];let mut hi=[f64::NEG_INFINITY;3];
+ for quad in quads{for triangle in [[0,1,2],[0,2,3]]{let mut coords=[[0.0;3];3];for i in 0..3{for d in 0..3{coords[i][d]=((relaxed[quad.vertices[triangle[i]]][d]-0.5)/n as f64-0.5)*scale;}}let mut ab=[0.0;3];let mut ac=[0.0;3];for d in 0..3{ab[d]=coords[1][d]-coords[0][d];ac[d]=coords[2][d]-coords[0][d];}let normal=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];let length=(normal[0]*normal[0]+normal[1]*normal[1]+normal[2]*normal[2]).sqrt();if length<1e-12{return Err("Degenerate surface triangle".into());}
+ for p in coords{indices.push((positions.len()/3) as u32);for d in 0..3{positions.push(p[d] as f32);normals.push((normal[d]/length) as f32);colors.push((v.palette[quad.material as usize][d]/255.0) as f32);lo[d]=lo[d].min(p[d]);hi[d]=hi[d].max(p[d]);}uvs.push((p[if quad.axis==0{2}else{0}]/scale+0.5) as f32);uvs.push((p[if quad.axis==1{2}else{1}]/scale+0.5) as f32);}
+ }}
+ Ok((positions,normals,colors,uvs,indices,[lo,hi]))
+}
+
 pub fn generate_rock(recipe:&Recipe,seed:u32,resolution:usize,scale:f64)->Result<Rock,String>{generate_rock_with_mode(recipe,seed,resolution,scale,MeshMode::Voxel)}
 pub fn generate_rock_with_mode(recipe:&Recipe,seed:u32,resolution:usize,scale:f64,mesh_mode:MeshMode)->Result<Rock,String>{
  if !scale.is_finite()||scale<=0.0{return Err("Invalid scale".into());}let v=sample_voxels(recipe,seed,resolution)?;let n=v.resolution;
@@ -110,7 +140,7 @@ pub fn generate_rock_with_mode(recipe:&Recipe,seed:u32,resolution:usize,scale:f6
  if mesh_mode==MeshMode::Voxel {for z in 0..n{for y in 0..n{for x in 0..n{let value=v.cells[x+n*(y+n*z)] as usize;if value==0{continue;}for f in 0..6{let [dx,dy,dz]=DIRS[f];let a=x as i32+dx;let b=y as i32+dy;let e=z as i32+dz;if a>=0&&b>=0&&e>=0&&a<n as i32&&b<n as i32&&e<n as i32&&v.cells[a as usize+n*(b as usize+n*e as usize)]!=0{continue;}let start=(p.len()/3) as u32;
  for q in CORNERS[f]{let coord=[x+q[0],y+q[1],z+q[2]];for k in 0..3{let pos=(coord[k] as f64/n as f64-0.5)*scale;p.push(pos as f32);lo[k]=lo[k].min(pos);hi[k]=hi[k].max(pos);colors.push((v.palette[value][k]/255.0) as f32);}normals.extend_from_slice(&[dx as f32,dy as f32,dz as f32]);uvs.push((coord[if f<2{2}else{0}] as f64/n as f64) as f32);uvs.push((coord[if f<2{1}else if f<4{2}else{1}] as f64/n as f64) as f32);}
  indices.extend_from_slice(&[start,start+1,start+2,start,start+2,start+3]);}}}}
- } else {let result=mesh_greedy(&v,scale);p=result.0;normals=result.1;colors=result.2;uvs=result.3;indices=result.4;lo=result.5[0];hi=result.5[1];}
+ } else {let result=if mesh_mode==MeshMode::Greedy{mesh_greedy(&v,scale)}else{mesh_surface(&v,scale,mesh_mode==MeshMode::SurfaceNetsCoarse)?};p=result.0;normals=result.1;colors=result.2;uvs=result.3;indices=result.4;lo=result.5[0];hi=result.5[1];}
  Ok(Rock{mesh_mode,voxels:v,positions:p,normals,colors,uvs,indices,bounding_box:[lo,hi],texture:stone_texture(recipe.family,seed,128)?})
 }
 pub const RECIPE: Recipe = Recipe { version: 2, family: Family::Shard, elongation: 1.001100815627724, erosion: 0.19281249878695236, hue: 0.45, operations: &[
@@ -123,4 +153,4 @@ pub const RECIPE: Recipe = Recipe { version: 2, family: Family::Shard, elongatio
 ] };
 pub fn rock(seed:u32,resolution:usize)->Result<Rock,String>{generate_rock_with_mode(&RECIPE,seed,resolution,1.0,SELECTED_MESH_MODE)}
 fn checksum(bytes:impl IntoIterator<Item=u8>)->u32{bytes.into_iter().fold(2166136261u32,|h,b|(h^b as u32).wrapping_mul(16777619))}
-fn main(){let args:Vec<String>=std::env::args().collect();let seed=args.get(1).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_SEED);let n=args.get(2).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_RESOLUTION);let scale=args.get(3).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_SCALE);let mesh_mode=match args.get(4).map(|s|s.as_str()){Some("voxel")=>MeshMode::Voxel,Some("lowpoly")=>MeshMode::Greedy,_=>SELECTED_MESH_MODE};match generate_rock_with_mode(&RECIPE,seed,n,scale,mesh_mode){Ok(r)=>println!("{{\"cellsHash\":{},\"textureHash\":{},\"vertices\":{},\"indices\":{},\"positionsHash\":{},\"normalsHash\":{},\"colorsHash\":{},\"uvsHash\":{},\"indicesHash\":{}}}",checksum(r.voxels.cells.iter().copied()),checksum(r.texture.pixels.iter().copied()),r.positions.len()/3,r.indices.len(),checksum(r.positions.iter().flat_map(|v|v.to_le_bytes())),checksum(r.normals.iter().flat_map(|v|v.to_le_bytes())),checksum(r.colors.iter().flat_map(|v|v.to_le_bytes())),checksum(r.uvs.iter().flat_map(|v|v.to_le_bytes())),checksum(r.indices.iter().flat_map(|v|v.to_le_bytes()))),Err(e)=>{eprintln!("{e}");std::process::exit(1);}}}
+fn main(){let args:Vec<String>=std::env::args().collect();let seed=args.get(1).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_SEED);let n=args.get(2).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_RESOLUTION);let scale=args.get(3).and_then(|s|s.parse().ok()).unwrap_or(SELECTED_SCALE);let mesh_mode=match args.get(4).map(|s|s.as_str()){Some("voxel")=>MeshMode::Voxel,Some("lowpoly")=>MeshMode::Greedy,Some("smooth")=>MeshMode::SurfaceNets,Some("smooth-coarse")=>MeshMode::SurfaceNetsCoarse,_=>SELECTED_MESH_MODE};match generate_rock_with_mode(&RECIPE,seed,n,scale,mesh_mode){Ok(r)=>println!("{{\"cellsHash\":{},\"textureHash\":{},\"vertices\":{},\"indices\":{},\"positionsHash\":{},\"normalsHash\":{},\"colorsHash\":{},\"uvsHash\":{},\"indicesHash\":{}}}",checksum(r.voxels.cells.iter().copied()),checksum(r.texture.pixels.iter().copied()),r.positions.len()/3,r.indices.len(),checksum(r.positions.iter().flat_map(|v|v.to_le_bytes())),checksum(r.normals.iter().flat_map(|v|v.to_le_bytes())),checksum(r.colors.iter().flat_map(|v|v.to_le_bytes())),checksum(r.uvs.iter().flat_map(|v|v.to_le_bytes())),checksum(r.indices.iter().flat_map(|v|v.to_le_bytes()))),Err(e)=>{eprintln!("{e}");std::process::exit(1);}}}
