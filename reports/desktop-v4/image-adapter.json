@@ -1,0 +1,8 @@
+{
+  "mockedRequest": true,
+  "missingKeyError": true,
+  "inputValidation": true,
+  "providerError": true,
+  "secretNotReturned": true,
+  "livePaidRequestExecuted": false
+}

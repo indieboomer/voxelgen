@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "family": "boulder",
+      "voxelTriangles": 3036,
+      "lowpolyTriangles": 1474,
+      "referenceTriangles": 1528
+    },
+    {
+      "family": "layered",
+      "voxelTriangles": 2920,
+      "lowpolyTriangles": 1042,
+      "referenceTriangles": 1066
+    },
+    {
+      "family": "shard",
+      "voxelTriangles": 1968,
+      "lowpolyTriangles": 786,
+      "referenceTriangles": 886
+    }
+  ],
+  "rustDefaultModeCompiled": true,
+  "typescriptModulesMatch": true,
+  "wireframeExportsTriangles": true,
+  "importedModelSwitch": true,
+  "importedVoxelRoundtrip": true,
+  "mobile": true,
+  "errors": []
+}

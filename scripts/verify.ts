@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {performance} from 'node:perf_hooks';
+import {writeFileSync} from 'node:fs';
+import {generateRock,sampleVoxels,meshVoxels,baseRecipe,rng,validate,parseVoxels,stoneTexture} from '../src/runtime/index.js';
+import {mutate,describe} from '../src/search/index.js';
+const rand=rng(77);let batch=0;const timings:any[]=[];
+for(const family of ['boulder','layered','shard'] as const){let r=baseRecipe(family);for(let i=0;i<150;i++)r=validate(mutate(r,rand,true));r=baseRecipe(family);const a=generateRock({recipe:r,seed:42});assert.deepEqual(a,generateRock({recipe:r,seed:42}));assert.notDeepEqual(a.voxels.cells,generateRock({recipe:r,seed:43}).voxels.cells);assert.deepEqual(parseVoxels(JSON.parse(JSON.stringify({...a.voxels,cells:Array.from(a.voxels.cells)}))).cells,a.voxels.cells);
+ for(let seed=0;seed<30;seed++){const rock=generateRock({recipe:r,seed});assert(rock.positions.length>0);assert.equal(rock.uvs.length,rock.positions.length/3*2);assert(rock.uvs.every(x=>x>=0&&x<=1));assert.equal(rock.texture.pixels.length,128*128*4);assert([...rock.positions].every(Number.isFinite));assert([...rock.indices].every(i=>i<rock.positions.length/3));assert.equal(describe(rock.voxels).components,1);batch++;}
+ for(const resolution of [24,28,32]){const voxel:number[]=[],mesh:number[]=[];for(let i=0;i<35;i++){const t=performance.now(),v=sampleVoxels(r,i,resolution),u=performance.now();meshVoxels(v);const end=performance.now();if(i>=5){voxel.push(u-t);mesh.push(end-u);}}const stats=(v:number[])=>{v.sort((a,b)=>a-b);return {median:v[15],p95:v[28]};};timings.push({family,resolution,repetitions:30,voxelMs:stats(voxel),meshMs:stats(mesh)});}}
+const textureTimes=[];for(let i=0;i<35;i++){const t=performance.now();stoneTexture('boulder',i);if(i>=5)textureTimes.push(performance.now()-t);}textureTimes.sort((a,b)=>a-b);
+writeFileSync('reports/geometry-v3/verification.json',JSON.stringify({batch,timings,textureMs:{resolution:128,repetitions:30,median:textureTimes[15],p95:textureTimes[28]},environment:{node:process.version,platform:process.platform,arch:process.arch}},null,2));console.log(`PASS: deterministic output, variation, 450 mutation validations, ${batch} nonempty connected models, indices and voxel round trip; timing report saved.`);

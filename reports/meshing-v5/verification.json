@@ -1,0 +1,59 @@
+{
+  "cases": 44,
+  "cube": {
+    "voxelTriangles": 1728,
+    "lowpolyTriangles": 12
+  },
+  "checks": [
+    "exact oriented surface and material coverage",
+    "no hidden faces or overlaps",
+    "outward winding",
+    "nondegenerate triangles",
+    "continuous planar UVs",
+    "bounding boxes",
+    "determinism",
+    "source voxels unchanged"
+  ],
+  "results": [
+    {
+      "family": "boulder",
+      "resolution": 28,
+      "seed": 42,
+      "voxelTriangles": 3272,
+      "lowpolyTriangles": 1582,
+      "reductionPercent": 51.650366748166256
+    },
+    {
+      "family": "layered",
+      "resolution": 28,
+      "seed": 42,
+      "voxelTriangles": 3176,
+      "lowpolyTriangles": 1148,
+      "reductionPercent": 63.85390428211587
+    },
+    {
+      "family": "shard",
+      "resolution": 28,
+      "seed": 42,
+      "voxelTriangles": 2220,
+      "lowpolyTriangles": 946,
+      "reductionPercent": 57.38738738738739
+    }
+  ],
+  "timings": {
+    "voxel": {
+      "repetitions": 20,
+      "medianMs": 2.3034000000000106,
+      "p95Ms": 2.932700000000068
+    },
+    "lowpoly": {
+      "repetitions": 20,
+      "medianMs": 2.3298999999999523,
+      "p95Ms": 2.8688999999999396
+    }
+  },
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "win32"
+  }
+}

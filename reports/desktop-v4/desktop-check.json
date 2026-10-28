@@ -1,0 +1,12 @@
+{
+  "packagedExecutable": "C:\\Users\\PC\\voxelgen\\release\\Voxel Generator Workshop-win32-x64\\VoxelGeneratorWorkshop.exe",
+  "selectedModel": 3,
+  "selectedSeed": 44,
+  "selectedResolution": 32,
+  "rustDefaultCompiled": true,
+  "offlinePromptPipeline": true,
+  "promptTargetsExported": true,
+  "workerSearchCompleted": true,
+  "isolatedRenderer": true,
+  "errors": []
+}

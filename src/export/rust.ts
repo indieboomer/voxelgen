@@ -1,0 +1,11 @@
+import {validate,type Recipe,type MeshMode} from '../runtime/index.js';
+const num=(x:number)=>Number.isInteger(x)?`${x}.0`:String(x);
+export function rustModule(recipe:Recipe,source:string,selection:{seed:number;resolution:number;scale:number;meshMode?:MeshMode}={seed:42,resolution:28,scale:1}){
+ validate(recipe);
+ const family=recipe.family[0].toUpperCase()+recipe.family.slice(1);
+ const operations=recipe.operations.map(o=>`    Op { kind: Kind::${o.kind[0].toUpperCase()+o.kind.slice(1)}, x: ${num(o.x)}, y: ${num(o.y)}, z: ${num(o.z)}, size: ${num(o.size)}, stretch: [${(o.stretch??[1,1,1]).map(num).join(', ')}], angle: ${num(o.angle??0)} }`).join(',\n');
+ const literal=`pub const RECIPE: Recipe = Recipe { version: ${recipe.version}, family: Family::${family}, elongation: ${num(recipe.elongation)}, erosion: ${num(recipe.erosion)}, hue: ${num(recipe.hue)}, operations: &[\n${operations}\n] };`;
+ if(!source.includes('// EXPORT_RECIPE'))throw Error('Missing Rust recipe marker');
+ const code=source.replace('// EXPORT_RECIPE',literal);
+ return `// Selected preview: seed ${selection.seed>>>0}, resolution ${selection.resolution}, scale ${selection.scale}, mesh ${selection.meshMode??'voxel'}.\n// RECIPE generates all four previews and other seeds; selected_rock() reproduces the selected model.\npub const SELECTED_SEED: u32 = ${selection.seed>>>0};\npub const SELECTED_RESOLUTION: usize = ${selection.resolution};\npub const SELECTED_SCALE: f64 = ${num(selection.scale)};\npub const SELECTED_MESH_MODE: MeshMode = MeshMode::${selection.meshMode==='lowpoly'?'Greedy':'Voxel'};\npub fn selected_rock() -> Result<Rock,String> { generate_rock_with_mode(&RECIPE, SELECTED_SEED, SELECTED_RESOLUTION, SELECTED_SCALE, SELECTED_MESH_MODE) }\n`+code.replace('//!','//').replaceAll('\n//!','\n//').replace('#![allow(dead_code)]','').replace('unwrap_or(42)','unwrap_or(SELECTED_SEED)').replace('unwrap_or(28)','unwrap_or(SELECTED_RESOLUTION)').replace('unwrap_or(1.0)','unwrap_or(SELECTED_SCALE)');
+}

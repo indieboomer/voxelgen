@@ -1,0 +1,15 @@
+{
+  "models": 324,
+  "mutationChecks": 675,
+  "resolutions": [
+    12,
+    28,
+    48
+  ],
+  "seeds": [
+    1009,
+    2027,
+    4093,
+    8191
+  ]
+}

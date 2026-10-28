@@ -1,0 +1,21 @@
+{
+  "errors": [],
+  "conceptSelection": true,
+  "referenceFocus": true,
+  "thumbnailCount": 15,
+  "referenceGlbImports": [
+    {
+      "family": "boulder",
+      "vertices": 6096
+    },
+    {
+      "family": "layered",
+      "vertices": 5704
+    },
+    {
+      "family": "shard",
+      "vertices": 4160
+    }
+  ],
+  "mobileOverflow": false
+}

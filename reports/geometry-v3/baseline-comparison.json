@@ -1,0 +1,65 @@
+{
+  "conditions": "Same v2 shape descriptors, v2 references and independent validation seeds for both runtimes; old saved C-123 recipes versus new authored family starters, not an evolutionary advantage claim.",
+  "records": [
+    {
+      "family": "boulder",
+      "oldScore": {
+        "score": 0.19424142175450376,
+        "similarity": 0.14036123209867923,
+        "coverage": 0.10752037931164907,
+        "diversity": 0.020360677083333334,
+        "invalid": 0,
+        "cost": 24000
+      },
+      "newScore": {
+        "score": 0.15343852136960603,
+        "similarity": 0.11236703397589677,
+        "coverage": 0.0817429747874185,
+        "diversity": 0.0019856770833333337,
+        "invalid": 0,
+        "cost": 40000
+      },
+      "improvementPercent": 21.00628177879966
+    },
+    {
+      "family": "layered",
+      "oldScore": {
+        "score": 0.29514402468201223,
+        "similarity": 0.2060825660972207,
+        "coverage": 0.17804291716958304,
+        "diversity": 0.014680989583333331,
+        "invalid": 0,
+        "cost": 8000
+      },
+      "newScore": {
+        "score": 0.12974324379240476,
+        "similarity": 0.09289291540773613,
+        "coverage": 0.07346065676933725,
+        "diversity": 0.002287109375,
+        "invalid": 0,
+        "cost": 56000
+      },
+      "improvementPercent": 56.04070116879718
+    },
+    {
+      "family": "shard",
+      "oldScore": {
+        "score": 0.37858444616550424,
+        "similarity": 0.2619356573956747,
+        "coverage": 0.23313757753965902,
+        "diversity": 0.023921875,
+        "invalid": 0,
+        "cost": 16000
+      },
+      "newScore": {
+        "score": 0.09522828145438038,
+        "similarity": 0.06605074792862134,
+        "coverage": 0.057955067051518074,
+        "diversity": 0.0013333333333333333,
+        "invalid": 0,
+        "cost": 40000
+      },
+      "improvementPercent": 74.84622455600044
+    }
+  ]
+}

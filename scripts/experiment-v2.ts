@@ -1,0 +1,5 @@
+import {writeFileSync,mkdirSync} from 'node:fs';
+import {search,evaluate,validationSeeds} from '../src/search/index.js';
+const records=[];mkdirSync('reports/reference-v2',{recursive:true});mkdirSync('public/recipes-v2',{recursive:true});
+for(const family of ['boulder','layered','shard'] as const)for(const repeat of [123,456,789])for(const mode of ['A','B','C'] as const){let last:any;for(const state of search(family,mode,96,repeat))last=state;const validation=evaluate(last.best,validationSeeds,true);const row={family,mode,repeat,budget:96,searchScore:last.score,validation,distribution:last.distribution,history:last.history,recipe:last.best};records.push(row);writeFileSync(`public/recipes-v2/${family}-${mode}-${repeat}.json`,JSON.stringify(last.best,null,2));console.log(family,mode,repeat,validation.score.toFixed(6));}
+writeFileSync('reports/reference-v2/experiment.json',JSON.stringify({conditions:{dataset:"geology-study-v2",population:12,elites:4,resolution:20,searchSeeds:[11,29,47],validationSeeds,trainingReferences:4,heldOutReferences:1,budgetPerRun:96,repeats:3},records},null,2));

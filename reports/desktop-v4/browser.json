@@ -1,0 +1,10 @@
+{
+  "selectionChecks": 4,
+  "rustDefaultsMatch": true,
+  "mockedAiPipeline": true,
+  "promptTargetsExported": true,
+  "searchCompleted": true,
+  "mobile": true,
+  "errors": [],
+  "viewportRaycastSelection": true
+}

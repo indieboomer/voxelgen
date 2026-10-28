@@ -1,0 +1,14 @@
+import {chromium} from '@playwright/test';
+import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+mkdirSync('.test-artifacts',{recursive:true});
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-sandbox']});
+const page=await browser.newPage({viewport:{width:1440,height:1100},acceptDownloads:true});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+await page.goto('http://127.0.0.1:5173');await page.waitForSelector('canvas');await page.screenshot({path:'.test-artifacts/workshop.png',fullPage:true});
+await page.click('#start');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('candidates'));await page.click('#stop');await page.waitForFunction(()=>document.querySelector('#status').textContent==='Search stopped');
+await page.selectOption('#family','layered');await page.click('#start');await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Search complete'),{timeout:120000});
+await page.click('#pin');await page.click('#batch');
+const [download]=await Promise.all([page.waitForEvent('download'),page.click('#glb')]);await download.saveAs('.test-artifacts/rock.glb');
+const bytes=Array.from(readFileSync('.test-artifacts/rock.glb'));
+const imported=await page.evaluate(async(bytes)=>{const {GLTFLoader}=await import('/node_modules/three/examples/jsm/loaders/GLTFLoader.js');const gltf=await new GLTFLoader().parseAsync(new Uint8Array(bytes).buffer,'');let meshes=0,vertices=0;gltf.scene.traverse(o=>{if(o.isMesh){meshes++;vertices+=o.geometry.attributes.position.count;}});return {meshes,vertices};},bytes);
+if(imported.meshes<1||imported.vertices<1||errors.length)throw Error(JSON.stringify({imported,errors}));
+await page.screenshot({path:'.test-artifacts/searched.png',fullPage:true});writeFileSync('reports/browser.json',JSON.stringify({errors,imported,searchStartStop:true,searchCompletion:true,glbRoundTrip:true},null,2));console.log({imported,errors});await browser.close();

@@ -1,0 +1,726 @@
+{
+  "dataset": "geology-study-v2",
+  "models": 90,
+  "records": [
+    {
+      "family": "boulder",
+      "n": 12,
+      "index": 0,
+      "occupied": 260,
+      "components": 1,
+      "vertices": 1152
+    },
+    {
+      "family": "boulder",
+      "n": 12,
+      "index": 1,
+      "occupied": 232,
+      "components": 1,
+      "vertices": 1112
+    },
+    {
+      "family": "boulder",
+      "n": 12,
+      "index": 2,
+      "occupied": 275,
+      "components": 1,
+      "vertices": 1296
+    },
+    {
+      "family": "boulder",
+      "n": 12,
+      "index": 3,
+      "occupied": 234,
+      "components": 1,
+      "vertices": 1136
+    },
+    {
+      "family": "boulder",
+      "n": 12,
+      "index": 4,
+      "occupied": 223,
+      "components": 1,
+      "vertices": 1072
+    },
+    {
+      "family": "boulder",
+      "n": 20,
+      "index": 0,
+      "occupied": 1227,
+      "components": 1,
+      "vertices": 3408
+    },
+    {
+      "family": "boulder",
+      "n": 20,
+      "index": 1,
+      "occupied": 1019,
+      "components": 1,
+      "vertices": 3000
+    },
+    {
+      "family": "boulder",
+      "n": 20,
+      "index": 2,
+      "occupied": 1226,
+      "components": 1,
+      "vertices": 3504
+    },
+    {
+      "family": "boulder",
+      "n": 20,
+      "index": 3,
+      "occupied": 1102,
+      "components": 1,
+      "vertices": 3280
+    },
+    {
+      "family": "boulder",
+      "n": 20,
+      "index": 4,
+      "occupied": 1094,
+      "components": 1,
+      "vertices": 3184
+    },
+    {
+      "family": "boulder",
+      "n": 24,
+      "index": 0,
+      "occupied": 2107,
+      "components": 1,
+      "vertices": 4896
+    },
+    {
+      "family": "boulder",
+      "n": 24,
+      "index": 1,
+      "occupied": 1763,
+      "components": 1,
+      "vertices": 4448
+    },
+    {
+      "family": "boulder",
+      "n": 24,
+      "index": 2,
+      "occupied": 2142,
+      "components": 1,
+      "vertices": 5104
+    },
+    {
+      "family": "boulder",
+      "n": 24,
+      "index": 3,
+      "occupied": 1842,
+      "components": 1,
+      "vertices": 4616
+    },
+    {
+      "family": "boulder",
+      "n": 24,
+      "index": 4,
+      "occupied": 1878,
+      "components": 1,
+      "vertices": 4840
+    },
+    {
+      "family": "boulder",
+      "n": 28,
+      "index": 0,
+      "occupied": 3337,
+      "components": 1,
+      "vertices": 6808
+    },
+    {
+      "family": "boulder",
+      "n": 28,
+      "index": 1,
+      "occupied": 2825,
+      "components": 1,
+      "vertices": 6096
+    },
+    {
+      "family": "boulder",
+      "n": 28,
+      "index": 2,
+      "occupied": 3402,
+      "components": 1,
+      "vertices": 6920
+    },
+    {
+      "family": "boulder",
+      "n": 28,
+      "index": 3,
+      "occupied": 2871,
+      "components": 1,
+      "vertices": 6248
+    },
+    {
+      "family": "boulder",
+      "n": 28,
+      "index": 4,
+      "occupied": 2955,
+      "components": 1,
+      "vertices": 6376
+    },
+    {
+      "family": "boulder",
+      "n": 32,
+      "index": 0,
+      "occupied": 4945,
+      "components": 1,
+      "vertices": 8736
+    },
+    {
+      "family": "boulder",
+      "n": 32,
+      "index": 1,
+      "occupied": 4253,
+      "components": 1,
+      "vertices": 7848
+    },
+    {
+      "family": "boulder",
+      "n": 32,
+      "index": 2,
+      "occupied": 5044,
+      "components": 1,
+      "vertices": 9136
+    },
+    {
+      "family": "boulder",
+      "n": 32,
+      "index": 3,
+      "occupied": 4390,
+      "components": 1,
+      "vertices": 8384
+    },
+    {
+      "family": "boulder",
+      "n": 32,
+      "index": 4,
+      "occupied": 4425,
+      "components": 1,
+      "vertices": 8376
+    },
+    {
+      "family": "boulder",
+      "n": 48,
+      "index": 0,
+      "occupied": 16893,
+      "components": 1,
+      "vertices": 20184
+    },
+    {
+      "family": "boulder",
+      "n": 48,
+      "index": 1,
+      "occupied": 14299,
+      "components": 1,
+      "vertices": 18088
+    },
+    {
+      "family": "boulder",
+      "n": 48,
+      "index": 2,
+      "occupied": 16966,
+      "components": 1,
+      "vertices": 20480
+    },
+    {
+      "family": "boulder",
+      "n": 48,
+      "index": 3,
+      "occupied": 15034,
+      "components": 1,
+      "vertices": 19256
+    },
+    {
+      "family": "boulder",
+      "n": 48,
+      "index": 4,
+      "occupied": 14888,
+      "components": 1,
+      "vertices": 18872
+    },
+    {
+      "family": "layered",
+      "n": 12,
+      "index": 0,
+      "occupied": 207,
+      "components": 1,
+      "vertices": 1136
+    },
+    {
+      "family": "layered",
+      "n": 12,
+      "index": 1,
+      "occupied": 175,
+      "components": 1,
+      "vertices": 1088
+    },
+    {
+      "family": "layered",
+      "n": 12,
+      "index": 2,
+      "occupied": 197,
+      "components": 1,
+      "vertices": 1144
+    },
+    {
+      "family": "layered",
+      "n": 12,
+      "index": 3,
+      "occupied": 179,
+      "components": 1,
+      "vertices": 1040
+    },
+    {
+      "family": "layered",
+      "n": 12,
+      "index": 4,
+      "occupied": 187,
+      "components": 1,
+      "vertices": 1008
+    },
+    {
+      "family": "layered",
+      "n": 20,
+      "index": 0,
+      "occupied": 907,
+      "components": 1,
+      "vertices": 3152
+    },
+    {
+      "family": "layered",
+      "n": 20,
+      "index": 1,
+      "occupied": 773,
+      "components": 1,
+      "vertices": 2888
+    },
+    {
+      "family": "layered",
+      "n": 20,
+      "index": 2,
+      "occupied": 910,
+      "components": 1,
+      "vertices": 3064
+    },
+    {
+      "family": "layered",
+      "n": 20,
+      "index": 3,
+      "occupied": 908,
+      "components": 1,
+      "vertices": 3224
+    },
+    {
+      "family": "layered",
+      "n": 20,
+      "index": 4,
+      "occupied": 860,
+      "components": 1,
+      "vertices": 3000
+    },
+    {
+      "family": "layered",
+      "n": 24,
+      "index": 0,
+      "occupied": 1601,
+      "components": 1,
+      "vertices": 4656
+    },
+    {
+      "family": "layered",
+      "n": 24,
+      "index": 1,
+      "occupied": 1339,
+      "components": 1,
+      "vertices": 4144
+    },
+    {
+      "family": "layered",
+      "n": 24,
+      "index": 2,
+      "occupied": 1556,
+      "components": 1,
+      "vertices": 4440
+    },
+    {
+      "family": "layered",
+      "n": 24,
+      "index": 3,
+      "occupied": 1464,
+      "components": 1,
+      "vertices": 4568
+    },
+    {
+      "family": "layered",
+      "n": 24,
+      "index": 4,
+      "occupied": 1499,
+      "components": 1,
+      "vertices": 4328
+    },
+    {
+      "family": "layered",
+      "n": 28,
+      "index": 0,
+      "occupied": 2544,
+      "components": 1,
+      "vertices": 6392
+    },
+    {
+      "family": "layered",
+      "n": 28,
+      "index": 1,
+      "occupied": 2175,
+      "components": 1,
+      "vertices": 5704
+    },
+    {
+      "family": "layered",
+      "n": 28,
+      "index": 2,
+      "occupied": 2596,
+      "components": 1,
+      "vertices": 6216
+    },
+    {
+      "family": "layered",
+      "n": 28,
+      "index": 3,
+      "occupied": 2300,
+      "components": 1,
+      "vertices": 6264
+    },
+    {
+      "family": "layered",
+      "n": 28,
+      "index": 4,
+      "occupied": 2355,
+      "components": 1,
+      "vertices": 5896
+    },
+    {
+      "family": "layered",
+      "n": 32,
+      "index": 0,
+      "occupied": 3723,
+      "components": 1,
+      "vertices": 8152
+    },
+    {
+      "family": "layered",
+      "n": 32,
+      "index": 1,
+      "occupied": 3234,
+      "components": 1,
+      "vertices": 7552
+    },
+    {
+      "family": "layered",
+      "n": 32,
+      "index": 2,
+      "occupied": 3714,
+      "components": 1,
+      "vertices": 7816
+    },
+    {
+      "family": "layered",
+      "n": 32,
+      "index": 3,
+      "occupied": 3414,
+      "components": 1,
+      "vertices": 8016
+    },
+    {
+      "family": "layered",
+      "n": 32,
+      "index": 4,
+      "occupied": 3423,
+      "components": 1,
+      "vertices": 7680
+    },
+    {
+      "family": "layered",
+      "n": 48,
+      "index": 0,
+      "occupied": 12619,
+      "components": 1,
+      "vertices": 18504
+    },
+    {
+      "family": "layered",
+      "n": 48,
+      "index": 1,
+      "occupied": 11011,
+      "components": 1,
+      "vertices": 16840
+    },
+    {
+      "family": "layered",
+      "n": 48,
+      "index": 2,
+      "occupied": 12784,
+      "components": 1,
+      "vertices": 18104
+    },
+    {
+      "family": "layered",
+      "n": 48,
+      "index": 3,
+      "occupied": 11659,
+      "components": 1,
+      "vertices": 18336
+    },
+    {
+      "family": "layered",
+      "n": 48,
+      "index": 4,
+      "occupied": 11709,
+      "components": 1,
+      "vertices": 17200
+    },
+    {
+      "family": "shard",
+      "n": 12,
+      "index": 0,
+      "occupied": 126,
+      "components": 1,
+      "vertices": 824
+    },
+    {
+      "family": "shard",
+      "n": 12,
+      "index": 1,
+      "occupied": 125,
+      "components": 1,
+      "vertices": 840
+    },
+    {
+      "family": "shard",
+      "n": 12,
+      "index": 2,
+      "occupied": 127,
+      "components": 1,
+      "vertices": 872
+    },
+    {
+      "family": "shard",
+      "n": 12,
+      "index": 3,
+      "occupied": 109,
+      "components": 1,
+      "vertices": 816
+    },
+    {
+      "family": "shard",
+      "n": 12,
+      "index": 4,
+      "occupied": 118,
+      "components": 1,
+      "vertices": 792
+    },
+    {
+      "family": "shard",
+      "n": 20,
+      "index": 0,
+      "occupied": 593,
+      "components": 1,
+      "vertices": 2368
+    },
+    {
+      "family": "shard",
+      "n": 20,
+      "index": 1,
+      "occupied": 513,
+      "components": 1,
+      "vertices": 2136
+    },
+    {
+      "family": "shard",
+      "n": 20,
+      "index": 2,
+      "occupied": 625,
+      "components": 1,
+      "vertices": 2424
+    },
+    {
+      "family": "shard",
+      "n": 20,
+      "index": 3,
+      "occupied": 600,
+      "components": 1,
+      "vertices": 2392
+    },
+    {
+      "family": "shard",
+      "n": 20,
+      "index": 4,
+      "occupied": 549,
+      "components": 1,
+      "vertices": 2176
+    },
+    {
+      "family": "shard",
+      "n": 24,
+      "index": 0,
+      "occupied": 1064,
+      "components": 1,
+      "vertices": 3432
+    },
+    {
+      "family": "shard",
+      "n": 24,
+      "index": 1,
+      "occupied": 904,
+      "components": 1,
+      "vertices": 2992
+    },
+    {
+      "family": "shard",
+      "n": 24,
+      "index": 2,
+      "occupied": 1080,
+      "components": 1,
+      "vertices": 3424
+    },
+    {
+      "family": "shard",
+      "n": 24,
+      "index": 3,
+      "occupied": 1069,
+      "components": 1,
+      "vertices": 3424
+    },
+    {
+      "family": "shard",
+      "n": 24,
+      "index": 4,
+      "occupied": 915,
+      "components": 1,
+      "vertices": 2992
+    },
+    {
+      "family": "shard",
+      "n": 28,
+      "index": 0,
+      "occupied": 1611,
+      "components": 1,
+      "vertices": 4464
+    },
+    {
+      "family": "shard",
+      "n": 28,
+      "index": 1,
+      "occupied": 1429,
+      "components": 1,
+      "vertices": 4160
+    },
+    {
+      "family": "shard",
+      "n": 28,
+      "index": 2,
+      "occupied": 1678,
+      "components": 1,
+      "vertices": 4608
+    },
+    {
+      "family": "shard",
+      "n": 28,
+      "index": 3,
+      "occupied": 1637,
+      "components": 1,
+      "vertices": 4456
+    },
+    {
+      "family": "shard",
+      "n": 28,
+      "index": 4,
+      "occupied": 1505,
+      "components": 1,
+      "vertices": 4480
+    },
+    {
+      "family": "shard",
+      "n": 32,
+      "index": 0,
+      "occupied": 2504,
+      "components": 1,
+      "vertices": 6216
+    },
+    {
+      "family": "shard",
+      "n": 32,
+      "index": 1,
+      "occupied": 2233,
+      "components": 1,
+      "vertices": 5640
+    },
+    {
+      "family": "shard",
+      "n": 32,
+      "index": 2,
+      "occupied": 2465,
+      "components": 1,
+      "vertices": 6304
+    },
+    {
+      "family": "shard",
+      "n": 32,
+      "index": 3,
+      "occupied": 2402,
+      "components": 1,
+      "vertices": 6096
+    },
+    {
+      "family": "shard",
+      "n": 32,
+      "index": 4,
+      "occupied": 2210,
+      "components": 1,
+      "vertices": 5552
+    },
+    {
+      "family": "shard",
+      "n": 48,
+      "index": 0,
+      "occupied": 8277,
+      "components": 1,
+      "vertices": 13616
+    },
+    {
+      "family": "shard",
+      "n": 48,
+      "index": 1,
+      "occupied": 7278,
+      "components": 1,
+      "vertices": 13104
+    },
+    {
+      "family": "shard",
+      "n": 48,
+      "index": 2,
+      "occupied": 8526,
+      "components": 1,
+      "vertices": 14392
+    },
+    {
+      "family": "shard",
+      "n": 48,
+      "index": 3,
+      "occupied": 8358,
+      "components": 1,
+      "vertices": 14152
+    },
+    {
+      "family": "shard",
+      "n": 48,
+      "index": 4,
+      "occupied": 7431,
+      "components": 1,
+      "vertices": 12744
+    }
+  ]
+}

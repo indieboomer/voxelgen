@@ -1,0 +1,62 @@
+{
+  "orderedViews": true,
+  "glbs": [
+    {
+      "family": "boulder",
+      "ref": {
+        "meshes": 1,
+        "uvs": 6096,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      },
+      "model": {
+        "meshes": 1,
+        "uvs": 6544,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      }
+    },
+    {
+      "family": "layered",
+      "ref": {
+        "meshes": 1,
+        "uvs": 5704,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      },
+      "model": {
+        "meshes": 1,
+        "uvs": 6352,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      }
+    },
+    {
+      "family": "shard",
+      "ref": {
+        "meshes": 1,
+        "uvs": 4160,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      },
+      "model": {
+        "meshes": 1,
+        "uvs": 4440,
+        "textures": 1,
+        "roughnessMaps": 1,
+        "width": 128
+      }
+    }
+  ],
+  "texturePngMatchesRuntime": true,
+  "solidMode": true,
+  "downloadedRustCompiledAndMatched": true,
+  "searchStopAndCompletion": true,
+  "mobileNoOverflow": true,
+  "errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "family": "boulder",
+  "elongation": 0.9095843285322189,
+  "erosion": 0.2591553953010589,
+  "hue": 0.45,
+  "operations": [
+    {
+      "kind": "mass",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "size": 0.72
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+﻿import {chromium} from '@playwright/test';
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const p=await b.newPage();p.on('pageerror',e=>console.log('ERROR',e.message));p.on('console',m=>{if(m.type()==='error'||m.type()==='warning')console.log(m.type(),m.text());});await p.goto('http://127.0.0.1:5173');await p.click('#glb');await p.waitForTimeout(2500);await b.close();

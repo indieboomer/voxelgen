@@ -1,0 +1,35 @@
+{
+  "name": "voxel-generator-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "check": "tsx scripts/verify.ts",
+    "experiment": "tsx scripts/experiment.ts",
+    "package:runtime": "tsc -p tsconfig.runtime.json && node scripts/runtime-package.mjs",
+    "check:rust": "tsx scripts/rust-check.ts",
+    "check:browser": "tsx scripts/workshop-v3-check.ts",
+    "check:shape": "tsx scripts/shape-check.ts",
+    "desktop": "npm run build && electron .",
+    "desktop:package": "npm run build && node scripts/package-desktop.mjs",
+    "check:workflow": "tsx scripts/workflow-check.ts && tsx scripts/prompt-target-check.ts && node scripts/image-adapter-check.mjs",
+    "check:desktop": "node scripts/desktop-check.mjs",
+    "check:meshing": "tsx scripts/greedy-check.ts",
+    "check:meshing:browser": "tsx scripts/mesh-browser-check.ts"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "@playwright/test": "^1.56.0",
+    "@types/three": "^0.180.0",
+    "electron": "^45.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.0"
+  },
+  "main": "desktop/main.cjs"
+}

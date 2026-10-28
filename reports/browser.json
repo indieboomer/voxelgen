@@ -1,0 +1,10 @@
+{
+  "errors": [],
+  "imported": {
+    "meshes": 1,
+    "vertices": 6144
+  },
+  "searchStartStop": true,
+  "searchCompletion": true,
+  "glbRoundTrip": true
+}

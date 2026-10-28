@@ -1,0 +1,127 @@
+{
+  "batch": 90,
+  "timings": [
+    {
+      "family": "boulder",
+      "resolution": 24,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 3.8958999999999833,
+        "p95": 4.425799999999981
+      },
+      "meshMs": {
+        "median": 1.5108999999999924,
+        "p95": 2.098700000000008
+      }
+    },
+    {
+      "family": "boulder",
+      "resolution": 28,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 5.95010000000002,
+        "p95": 6.671899999999937
+      },
+      "meshMs": {
+        "median": 2.314200000000028,
+        "p95": 2.7445000000000164
+      }
+    },
+    {
+      "family": "boulder",
+      "resolution": 32,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 8.908699999999953,
+        "p95": 9.455600000000004
+      },
+      "meshMs": {
+        "median": 3.2060999999998785,
+        "p95": 4.108799999999974
+      }
+    },
+    {
+      "family": "layered",
+      "resolution": 24,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 5.475500000000011,
+        "p95": 9.20620000000008
+      },
+      "meshMs": {
+        "median": 1.395600000000286,
+        "p95": 3.440100000000257
+      }
+    },
+    {
+      "family": "layered",
+      "resolution": 28,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 8.396999999999935,
+        "p95": 8.700300000000425
+      },
+      "meshMs": {
+        "median": 2.039299999999912,
+        "p95": 2.6468999999997322
+      }
+    },
+    {
+      "family": "layered",
+      "resolution": 32,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 12.522399999999834,
+        "p95": 13.643199999999979
+      },
+      "meshMs": {
+        "median": 2.788300000000163,
+        "p95": 3.3638999999998305
+      }
+    },
+    {
+      "family": "shard",
+      "resolution": 24,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 3.543300000000272,
+        "p95": 3.8432999999999993
+      },
+      "meshMs": {
+        "median": 0.944300000000112,
+        "p95": 1.1496999999999389
+      }
+    },
+    {
+      "family": "shard",
+      "resolution": 28,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 5.610500000000229,
+        "p95": 5.978799999999865
+      },
+      "meshMs": {
+        "median": 1.3612000000002809,
+        "p95": 1.6589999999996508
+      }
+    },
+    {
+      "family": "shard",
+      "resolution": 32,
+      "repetitions": 30,
+      "voxelMs": {
+        "median": 8.352499999999964,
+        "p95": 8.776400000000649
+      },
+      "meshMs": {
+        "median": 1.9994000000006054,
+        "p95": 2.5763999999999214
+      }
+    }
+  ],
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "win32",
+    "arch": "x64"
+  }
+}
